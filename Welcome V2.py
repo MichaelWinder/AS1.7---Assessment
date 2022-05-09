@@ -33,18 +33,17 @@ instructions()
 
 
 # Choosing what game to play
-def choosing_game():
-    print("1 - True or False\n2 - Multiple Choice"
-          "\n3 - Whole word answers")
-    game_choice = input("What game would you like to play?:")
-    while game_choice not in ("1", "2", "3"):
-        game_choice = input("What game would you like to play?(1, 2, or 3):")
-    if game_choice == "1":
-        print("1")
-        # true_or_false()
-    elif game_choice == "2":
-        print("2")
-        # multiple_choice()
-    else:
-        print("3")
-        # whole_word_answers()
+print("1 - True or False\n2 - Multiple Choice"
+      "\n3 - Whole word answers")
+game_choice = input("What game would you like to play?:")
+while game_choice not in ("1", "2", "3"):
+    game_choice = input("What game would you like to play?(1, 2, or 3):")
+if game_choice == "1":
+    print("1")
+    # true_or_false()
+elif game_choice == "2":
+    print("2")
+    # multiple_choice()
+else:
+    print("3")
+    # whole_word_answers()

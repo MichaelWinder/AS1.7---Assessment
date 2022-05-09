@@ -1,7 +1,3 @@
-"""This code asks for the players name, tells the player instructions if
-they want them, and gives 3 options of games to play"""
-
-
 def yes_no_checker(question):
     while True:
         ans = input(question).lower()
@@ -13,23 +9,12 @@ def yes_no_checker(question):
             elif ans in ("n", "no"):
                 return "no"
 
-
 # Shows player instructions
 def instructions():
     if yes_no_checker("Have you played this Maori Quiz before?: ") == "no":
         decoration("Instructions", 2)
-        print("\nYou will be given three options of games to play to help "
-              "you learn Maori\n\nEach game has a different style of "
-              "questioning as seen by their names\n\nTo choose which game "
-              "you want to play type the corresponding number next to the "
-              "game\n\nEach game will give the instructions on how to play "
-              "their game")
-        print("="*62)
-        if yes_no_checker("Are you ready to play?:") == "no":
-            print("Ok i'll wait")
-            if yes_no_checker("Are you ready to play now?:") == "no":
-                print("\nI'm not waiting any longer!")
-                quit()
+    else:
+        print("Program Continues")
 
 
 def decoration(text, x):
@@ -67,7 +52,6 @@ def choosing_game():
 
 # Main Routine
 decoration("Welcome to the Maori Quiz!", 1)
-name = input("Hello what is your name: ").capitalize()
-print(f"Well {name} I hope you enjoy learning Maori!\n")
+
 instructions()
 choosing_game()
