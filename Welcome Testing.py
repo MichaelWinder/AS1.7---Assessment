@@ -9,6 +9,7 @@ def yes_no_checker(question):
             elif ans in ("n", "no"):
                 return "no"
 
+
 # Shows player instructions
 def instructions():
     if yes_no_checker("Have you played this Maori Quiz before?: ") == "no":

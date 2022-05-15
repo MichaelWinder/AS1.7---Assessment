@@ -1,3 +1,6 @@
+"""This code shows the player instructions and asks them a statement
+is True or False, if the player gets it correct then they receive a point
+at the end a total of 20 is shown"""
 import time
 
 
@@ -12,7 +15,10 @@ def decoration(text, x):
         top_bottom = "-" * len(formatted_text)
     elif x == 4:
         top_bottom = "#" * len(formatted_text)
-    return print(f"{top_bottom}\n{formatted_text}\n{top_bottom}")
+    elif x == 0:
+        formatted_text = text
+        top_bottom = "=" * len(formatted_text)
+    return print(f"{top_bottom}\n{formatted_text}\n{top_bottom}\n")
 
 
 def yes_no_checker(question):
@@ -27,6 +33,7 @@ def yes_no_checker(question):
                 return "no"
 
 
+# Shows player instructions
 def instructions(game):
     if game == 1:
         if yes_no_checker("Have you played this Maori Quiz before?: ") == "no":
@@ -74,6 +81,7 @@ def instructions(game):
             waiting()
 
 
+# This code is here for laughs
 def waiting():
     if yes_no_checker("Are you ready to play?:") == "no":
         print("Ok i'll wait")
@@ -87,17 +95,33 @@ def waiting():
             quit()
 
 
-instructions(2)
-answer = "t"
-player_answer = input("Rua means two\n").lower()
-while player_answer not in ("t", "true", "f", "false"):
-    player_answer = input("Rua means two\n").lower()
-else:
-    if player_answer in ("t", "true"):
-        player_answer = "t"
+# Asks a statement and tells whether player answer is correct or not
+def true_or_false(question, answer, number):
+    print(f"Question {number}:")
+    player_answer = input(f"{question}\n").lower()
+    while player_answer not in ("t", "true", "f", "false"):
+        player_answer = input(f"Answer either true or fal"
+                              f"se\n{question}\n").lower()
     else:
-        player_answer = "f"
-if player_answer == answer:
-    print("Good Job")
-else:
-    print("Bad Job")
+        if player_answer in ("t", "true"):
+            player_answer = "t"
+        else:
+            player_answer = "f"
+    if player_answer == answer:
+        decoration("CORRECT", 1)
+        return 1
+    else:
+        decoration("Wrong", 3)
+        return 0
+
+
+# Main routine
+instructions(2)
+true_false_score = 0
+
+# Questions
+true_false_score += true_or_false("Rua means two", "t", 1)
+true_false_score += true_or_false("Rua means three", "f", 2)
+
+# Overall score
+decoration(f"You scored {true_false_score}/20", 0)

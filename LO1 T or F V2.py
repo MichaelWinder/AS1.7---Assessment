@@ -12,7 +12,7 @@ def decoration(text, x):
         top_bottom = "-" * len(formatted_text)
     elif x == 4:
         top_bottom = "#" * len(formatted_text)
-    return print(f"{top_bottom}\n{formatted_text}\n{top_bottom}")
+    return print(f"{top_bottom}\n{formatted_text}\n{top_bottom}\n")
 
 
 def yes_no_checker(question):
@@ -87,17 +87,22 @@ def waiting():
             quit()
 
 
-instructions(2)
-answer = "t"
-player_answer = input("Rua means two\n").lower()
-while player_answer not in ("t", "true", "f", "false"):
-    player_answer = input("Rua means two\n").lower()
-else:
-    if player_answer in ("t", "true"):
-        player_answer = "t"
+def true_or_false(question, answer, number):
+    print(f"Question {number}:")
+    player_answer = input(f"{question}\n").lower()
+    while player_answer not in ("t", "true", "f", "false"):
+        player_answer = input(f"{question}\n").lower()
     else:
-        player_answer = "f"
-if player_answer == answer:
-    print("Good Job")
-else:
-    print("Bad Job")
+        if player_answer in ("t", "true"):
+            player_answer = "t"
+        else:
+            player_answer = "f"
+    if player_answer == answer:
+        decoration("CORRECT", 1)
+    else:
+        decoration("Wrong", 3)
+
+
+instructions(2)
+true_or_false("Rua means two", "t", 1)
+true_or_false("Rua means three", "f", 2)
