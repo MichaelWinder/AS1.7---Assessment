@@ -81,7 +81,7 @@ def instructions(game):
             waiting()
 
 
-# This code is here for laughs
+# This code is here for the player's entertainment
 def waiting():
     if yes_no_checker("Are you ready to play?:") == "no":
         print("Ok i'll wait")
