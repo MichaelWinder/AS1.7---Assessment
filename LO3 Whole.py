@@ -1,4 +1,3 @@
-import random
 import time
 
 
@@ -94,63 +93,6 @@ def waiting():
             quit()
 
 
-# Asks a statement and tells whether player answer is correct or not
-def t_or_f(question, answer, number):
-    instructions(2)
-    print(f"Question {number}:")
-    player_answer = input(f"{question}\n").lower()
-    while player_answer not in ("t", "true", "f", "false"):
-        player_answer = input(f"Answer either true or fal"
-                              f"se\n{question}\n").lower()
-    else:
-        if player_answer in ("t", "true"):
-            player_answer = "t"
-        else:
-            player_answer = "f"
-    if player_answer == answer:
-        decoration("CORRECT", 1)
-        return 1
-    else:
-        decoration("Wrong", 3)
-        return 0
-
-
-# Runs the multiple choice questions
-def m_choice(question, answer, blank1, blank2, blank3, number):
-    instructions(3)
-    answer_randomiser = [answer, blank1, blank2, blank3]
-    list_number = random.randint(0, 3)
-    option_one = answer_randomiser.pop(list_number)
-    list_number = random.randint(0, 2)
-    option_two = answer_randomiser.pop(list_number)
-    list_number = random.randint(0, 1)
-    option_three = answer_randomiser.pop(list_number)
-    option_four = answer_randomiser[0]
-    print(f"Question {number}:")
-    player_answer = input(f"{question}\n1 - {option_one}\n2 - {option_two}\n"
-                          f"3 - {option_three}\n4 - {option_four}\n")
-    while player_answer not in ("1", "2", "3", "4"):
-        player_answer = input("Answer either 1 2 3 or 4"
-                              f"\n{question}\n{option_one}\n{option_two}\n"
-                              f"{option_three}\n{option_four}\n")
-    if player_answer == "1" and option_one == answer:
-        decoration("CORRECT", 1)
-        return 1
-    elif player_answer == "2" and option_two == answer:
-        decoration("CORRECT", 1)
-        return 1
-    elif player_answer == "3" and option_three == answer:
-        decoration("CORRECT", 1)
-        return 1
-    elif player_answer == "4" and option_four == answer:
-        decoration("CORRECT", 1)
-        return 1
-    else:
-        decoration("Wrong", 3)
-        return 0
-
-
-#
 def w_word(question, answer, number):
     instructions(4)
     print(f"Question {number}:")
@@ -166,3 +108,13 @@ def w_word(question, answer, number):
         decoration("Wrong", 3)
         return 0
 
+
+# Main Routine
+w_score = 0
+
+# Questions
+w_score += w_word("What is Rua in English?", "two", 1)
+w_score += w_word("What is Rua in English?", "two", 2)
+
+# Overall Score
+decoration(f"You scored {w_score}/20", 0)

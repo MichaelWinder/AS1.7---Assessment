@@ -96,7 +96,8 @@ def waiting():
 
 
 # Asks a statement and tells whether player answer is correct or not
-def true_or_false(question, answer, number):
+def t_or_f(question, answer, number):
+    instructions(2)
     print(f"Question {number}:")
     player_answer = input(f"{question}\n").lower()
     while player_answer not in ("t", "true", "f", "false"):
@@ -116,12 +117,11 @@ def true_or_false(question, answer, number):
 
 
 # Main routine
-instructions(2)
-true_false_score = 0
+t_or_f_score = 0
 
 # Questions
-true_false_score += true_or_false("Rua means two", "t", 1)
-true_false_score += true_or_false("Rua means three", "f", 2)
+t_or_f_score += t_or_f("Rua means two", "t", 1)
+t_or_f_score += t_or_f("Rua means three", "f", 2)
 
 # Overall score
-decoration(f"You scored {true_false_score}/20", 0)
+decoration(f"You scored {t_or_f_score}/20", 0)

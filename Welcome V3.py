@@ -100,18 +100,18 @@ def choosing_game():
                             "(1, 2, or 3):")
     if game_choice == "1":
         print("true")
-        # true_or_false()
+        # t_or_f()
     elif game_choice == "2":
         print("multiple")
-        # multiple_choice()
+        # m_choice()
     else:
         print("whole")
-        # whole_word_answers()
+        # w_word()
 
 
 # Main Routine
 decoration("Welcome to the Maori Quiz!", 1)
 name = input("Hello what is your name: ").capitalize()
 print(f"Well {name} I hope you enjoy learning Maori!\n")
-instructions()
+instructions(1)
 choosing_game()

@@ -94,10 +94,9 @@ def waiting():
             quit()
 
 
-instructions(3)
-
-
-def multiple_choice(question, answer, blank1, blank2, blank3, number):
+# Runs the multiple choice questions
+def m_choice(question, answer, blank1, blank2, blank3, number):
+    instructions(3)
     answer_randomiser = [answer, blank1, blank2, blank3]
     list_number = random.randint(0, 3)
     option_one = answer_randomiser.pop(list_number)
@@ -108,11 +107,33 @@ def multiple_choice(question, answer, blank1, blank2, blank3, number):
     option_four = answer_randomiser[0]
     print(f"Question {number}:")
     player_answer = input(f"{question}\n1 - {option_one}\n2 - {option_two}\n"
-                          f"3 - {option_three}\n4 - {option_four}\n").lower()
+                          f"3 - {option_three}\n4 - {option_four}\n")
     while player_answer not in ("1", "2", "3", "4"):
         player_answer = input("Answer either 1 2 3 or 4"
                               f"\n{question}\n{option_one}\n{option_two}\n"
-                              f"{option_three}\n{option_four}\n").lower()
+                              f"{option_three}\n{option_four}\n")
+    if player_answer == "1" and option_one == answer:
+        decoration("CORRECT", 1)
+        return 1
+    elif player_answer == "2" and option_two == answer:
+        decoration("CORRECT", 1)
+        return 1
+    elif player_answer == "3" and option_three == answer:
+        decoration("CORRECT", 1)
+        return 1
+    elif player_answer == "4" and option_four == answer:
+        decoration("CORRECT", 1)
+        return 1
+    else:
+        decoration("Wrong", 3)
+        return 0
 
 
-multiple_choice("What is five in Maori?", "Rima", "Tahi", "Rua", "Iwa", 1)
+# Main Routine
+m_score = 0
+
+# Questions
+m_score += m_choice("What is five in Maori?", "Rima", "Tahi", "Rua", "Iwa", 1)
+
+# Overall score
+decoration(f"You scored {m_score}/20", 0)
