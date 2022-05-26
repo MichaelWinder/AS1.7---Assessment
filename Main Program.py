@@ -40,8 +40,8 @@ def instructions(game):
                   "you learn Maori\n\nEach game has a different style of "
                   "questioning as seen by their names\n\nTo choose which game "
                   "you want to play type the corresponding number next to the "
-                  "game\n\nEach game will give the instructions on how to play "
-                  "their game")
+                  "game\n\nEach game will give the instructions on how to "
+                  "play their game")
             print("=" * 62)
             waiting()
     elif game == 2:
@@ -56,7 +56,7 @@ def instructions(game):
             waiting()
 
     elif game == 3:
-        if yes_no_checker("Have you played this Maori Quiz before?: ") == "no":
+        if yes_no_checker("Have you played Multiple Choice before?: ") == "no":
             decoration("Instructions", 2)
             print("You will be given a question and four different "
                   "possible answers\nYour job is to decide which is the "
@@ -68,7 +68,8 @@ def instructions(game):
             print("=" * 77)
             waiting()
     elif game == 4:
-        if yes_no_checker("Have you played this Maori Quiz before?: ") == "no":
+        if yes_no_checker("Have you played Whole Word Answers before?: ") ==\
+                "no":
             decoration("Instructions", 2)
             print("You will be given a question that you will have to "
                   "answer a whole word (not numbers)\nIf you get the "
@@ -94,9 +95,30 @@ def waiting():
             quit()
 
 
-# Asks a statement and tells whether player answer is correct or not
+# Choosing what game to play and running it
+def choosing_game():
+    print("1 - True or False\n2 - Multiple Choice"
+          "\n3 - Whole word answers")
+    game_choice = input("What game would you like to play?:")
+    while game_choice not in ("1", "2", "3"):
+        game_choice = input("What game would you like to play?"
+                            "(1, 2, or 3):")
+    if game_choice == "1":
+        t_or_f_score = true_or_false()
+        decoration(f"You scored {t_or_f_score}/20", 0)
+        return t_or_f_score
+    elif game_choice == "2":
+        m_score = multiple_choice()
+        decoration(f"You scored {m_score}/20", 0)
+        return m_score
+    else:
+        w_score = whole_word_answers()
+        decoration(f"You scored {w_score}/20", 0)
+        return w_score
+
+
+# Presents a statement and tells whether player answer is correct or not
 def t_or_f(question, answer, number):
-    instructions(2)
     print(f"Question {number}:")
     player_answer = input(f"{question}\n").lower()
     while player_answer not in ("t", "true", "f", "false"):
@@ -115,16 +137,14 @@ def t_or_f(question, answer, number):
         return 0
 
 
-# Runs the multiple choice questions
+# Asks a question and shows 4 different answers
 def m_choice(question, answer, blank1, blank2, blank3, number):
     instructions(3)
     answer_randomiser = [answer, blank1, blank2, blank3]
-    list_number = random.randint(0, 3)
-    option_one = answer_randomiser.pop(list_number)
-    list_number = random.randint(0, 2)
-    option_two = answer_randomiser.pop(list_number)
-    list_number = random.randint(0, 1)
-    option_three = answer_randomiser.pop(list_number)
+    random.shuffle(answer_randomiser)
+    option_one = answer_randomiser.pop(0)
+    option_two = answer_randomiser.pop(0)
+    option_three = answer_randomiser.pop(0)
     option_four = answer_randomiser[0]
     print(f"Question {number}:")
     player_answer = input(f"{question}\n1 - {option_one}\n2 - {option_two}\n"
@@ -150,9 +170,8 @@ def m_choice(question, answer, blank1, blank2, blank3, number):
         return 0
 
 
-#
+# Asks a question and expects a whole word answer
 def w_word(question, answer, number):
-    instructions(4)
     print(f"Question {number}:")
     player_answer = input(f"{question}\n").lower()
     if player_answer != answer:
@@ -166,3 +185,64 @@ def w_word(question, answer, number):
         decoration("Wrong", 3)
         return 0
 
+
+# Player can play another game or end and get results
+def play_again(score, total):
+    player_choice = input("To play again chose one of these "
+                          "options:\n1 - True or "
+                          "False\n2 - Multiple Choice\n3 - Whole word answers"
+                          "\n4 - Results\n")
+    while player_choice not in ("1", "2", "3", "4"):
+        player_choice = input("Please choose from a number from 1 - 4\n")
+    if player_choice == "1":
+        t_or_f_score = true_or_false()
+        decoration(f"You scored {t_or_f_score}/20", 0)
+        return t_or_f_score
+    elif player_choice == "2":
+        m_score = multiple_choice()
+        decoration(f"You scored {m_score}/20", 0)
+        return m_score
+    elif player_choice == "3":
+        w_score = whole_word_answers()
+        decoration(f"You scored {w_score}/20", 0)
+        return w_score
+    else:
+        print(f"You scored {score}/{total}")
+        quit()
+
+
+def true_or_false():
+    instructions(2)
+    t_or_f_score = 0
+    t_or_f_score += t_or_f("Rua means two", "t", 1)
+    t_or_f_score += t_or_f("Rua means three", "f", 2)
+    return t_or_f_score
+
+
+def multiple_choice():
+    instructions(3)
+    m_score = 0
+    m_score += m_choice("What is five in Maori?", "Rima", "Tahi", "Rua",
+                        "Iwa", 1)
+    return m_score
+
+
+def whole_word_answers():
+    instructions(4)
+    w_score = 0
+    w_score += w_word("What is Rua in English?", "two", 1)
+    return w_score
+
+
+# Main Routine
+decoration("Welcome to the Maori Quiz!", 1)
+name = input("Hello what is your name: ").capitalize()
+print(f"Well {name} I hope you enjoy learning Maori!\n")
+instructions(1)
+total = 20
+score = 0
+score += choosing_game()
+
+while True:
+    score += play_again(score, total)
+    total += 20
