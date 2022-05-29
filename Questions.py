@@ -87,75 +87,51 @@ def w_word(question, answer, number):
 
 def true_or_false():
     t_or_f_score = 0
-    t_or_f_score += t_or_f("Rua means two", "t", 1)
-    t_or_f_score += t_or_f("Rua means three", "f", 2)
-    t_or_f_score += t_or_f("", "", 3)
-    t_or_f_score += t_or_f("", "", 4)
-    t_or_f_score += t_or_f("", "", 5)
-    t_or_f_score += t_or_f("", "", 6)
-    t_or_f_score += t_or_f("", "", 7)
-    t_or_f_score += t_or_f("", "", 8)
-    t_or_f_score += t_or_f("", "", 9)
-    t_or_f_score += t_or_f("", "", 10)
-    t_or_f_score += t_or_f("", "", 11)
-    t_or_f_score += t_or_f("", "", 12)
-    t_or_f_score += t_or_f("", "", 13)
-    t_or_f_score += t_or_f("", "", 14)
-    t_or_f_score += t_or_f("", "", 15)
-    t_or_f_score += t_or_f("", "", 16)
-    t_or_f_score += t_or_f("", "", 17)
-    t_or_f_score += t_or_f("", "", 18)
-    t_or_f_score += t_or_f("", "", 19)
-    t_or_f_score += t_or_f("", "", 20)
+    t_or_f_score += t_or_f("Rua means Two", "t", 1)
+    t_or_f_score += t_or_f("Wha means Three", "f", 2)
+    t_or_f_score += t_or_f("Food means Kai", "t", 3)
+    t_or_f_score += t_or_f("Aporo means Apple", "t", 4)
+    t_or_f_score += t_or_f("Sheep means Kau", "f", 5)
+    t_or_f_score += t_or_f("Kunekune means Pig", "t", 6)
+    t_or_f_score += t_or_f("Kikorangi means Blue", "t", 7)
+    t_or_f_score += t_or_f("Yellow means Kakariki", "f", 8)
+    t_or_f_score += t_or_f("Raspberry means Karepe", "f", 9)
+    t_or_f_score += t_or_f("Beans means Pini", "t", 10)
     return t_or_f_score
 
 
 def multiple_choice():
     m_score = 0
-    m_score += m_choice("What is five in Maori?", "Rima", "Tahi", "Rua",
+    m_score += m_choice("Five means?", "Rima", "Tahi", "Rua",
                         "Iwa", 1)
-    m_score += m_choice("", "", "", "", "", 2)
-    m_score += m_choice("", "", "", "", "", 3)
-    m_score += m_choice("", "", "", "", "", 4)
-    m_score += m_choice("", "", "", "", "", 5)
-    m_score += m_choice("", "", "", "", "", 6)
-    m_score += m_choice("", "", "", "", "", 7)
-    m_score += m_choice("", "", "", "", "", 8)
-    m_score += m_choice("", "", "", "", "", 9)
-    m_score += m_choice("", "", "", "", "", 10)
-    m_score += m_choice("", "", "", "", "", 11)
-    m_score += m_choice("", "", "", "", "", 12)
-    m_score += m_choice("", "", "", "", "", 13)
-    m_score += m_choice("", "", "", "", "", 14)
-    m_score += m_choice("", "", "", "", "", 15)
-    m_score += m_choice("", "", "", "", "", 16)
-    m_score += m_choice("", "", "", "", "", 17)
-    m_score += m_choice("", "", "", "", "", 18)
-    m_score += m_choice("", "", "", "", "", 19)
-    m_score += m_choice("", "", "", "", "", 20)
+    m_score += m_choice("Karaka means?", "Orange", "Apple", "Cracker",
+                        "Car", 2)
+    m_score += m_choice("Block means?", "Paraka", "Kunekune", "Tokena",
+                        "Kurupae", 3)
+    m_score += m_choice("Ngaro means?", "Lost", "Forest", "Orange", "Gum", 4)
+    m_score += m_choice("Whutupōro means?", "Rugby", "Football", "Tennis",
+                        "Shot-put", 5)
+    m_score += m_choice("Football means?", "Whutuporo", "Poi Kupenga", "Hoki",
+                        "Hopukanga", 6)
+    m_score += m_choice("Monument means?", "Whakamaharatanga", "Hākari",
+                        "Whakapakoko", "Whakamaorihia", 7)
+    m_score += m_choice("Mahau means?", "Hut", "Farm", "House", "River", 8)
+    m_score += m_choice("Farm means?", "Pamu", "Moana", "Mara", "Oneone", 9)
+    m_score += m_choice("English means?", "Reo Pakeha", "Reo Paniora",
+                        "Reo Kariki", "Huanui", 10)
     return m_score
 
 
 def whole_word_answers():
     w_score = 0
     w_score += w_word("What is Rua in English?", "two", 1)
-    w_score += w_word("?", "", 2)
-    w_score += w_word("?", "", 3)
-    w_score += w_word("?", "", 4)
-    w_score += w_word("?", "", 5)
-    w_score += w_word("?", "", 6)
-    w_score += w_word("?", "", 7)
-    w_score += w_word("?", "", 8)
-    w_score += w_word("?", "", 9)
-    w_score += w_word("?", "", 10)
-    w_score += w_word("?", "", 11)
-    w_score += w_word("?", "", 12)
-    w_score += w_word("?", "", 13)
-    w_score += w_word("?", "", 14)
-    w_score += w_word("?", "", 15)
-    w_score += w_word("?", "", 16)
-    w_score += w_word("?", "", 17)
-    w_score += w_word("?", "", 18)
-    w_score += w_word("?", "", 19)
-    w_score += w_word("?", "", 20)
+    w_score += w_word("What is Nine in Maori?", "iwa", 2)
+    w_score += w_word("What is Tekau in English?", "ten", 3)
+    w_score += w_word("What is Waru in English?", "eight", 4)
+    w_score += w_word("What is one in Maori?", "tahi", 5)
+    w_score += w_word("What is Seven in Maori?", "whitu", 6)
+    w_score += w_word("What is Five in Maori?", "rima", 7)
+    w_score += w_word("What is Toru in English?", "three", 8)
+    w_score += w_word("What is Ono in English?", "six", 9)
+    w_score += w_word("What is Four in Maori?", "wha", 10)
     return w_score

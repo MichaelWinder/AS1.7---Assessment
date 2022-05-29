@@ -1,5 +1,7 @@
+"""This code shows the player instructions and asks them a statement
+is True or False, if the player gets it correct then they receive a point
+at the end a total of 20 is shown"""
 import time
-import random
 
 
 def decoration(text, x):
@@ -42,7 +44,7 @@ def instructions(game):
                   "you want to play type the corresponding number next to the "
                   "game\n\nEach game will give the instructions on how to play "
                   "their game")
-            print("=" * 62)
+            print("="*62)
             waiting()
     elif game == 2:
         if yes_no_checker("Have you played True or False before?: ") == "no":
@@ -51,21 +53,20 @@ def instructions(game):
                   "whether it is true or false.\nTo decide you can input T or "
                   "True and F or False.\n\nEach question you get right will "
                   "award you a point.\nOnce all questions have been answered "
-                  "the program will show a score out of 20.")
-            print("=" * 78)
+                  "the program will show a score out of 10.")
+            print("="*78)
             waiting()
 
     elif game == 3:
         if yes_no_checker("Have you played this Maori Quiz before?: ") == "no":
             decoration("Instructions", 2)
-            print("You will be given a question and four different "
-                  "possible answers\nYour job is to decide which is the "
-                  "right answer\nTo do that each answer will have a number "
-                  "next to it\n\n"
-                  "Input that number to choose that answer Each question you "
-                  "get right will award you a point\nOnce all questions have "
-                  "been answered the program will show a score out of 20")
-            print("=" * 77)
+            print("\nYou will be given three options of games to play to help "
+                  "you learn Maori\n\nEach game has a different style of "
+                  "questioning as seen by their names\n\nTo choose which game "
+                  "you want to play type the corresponding number next to the "
+                  "game\n\nEach game will give the instructions on how to play "
+                  "their game")
+            print("="*62)
             waiting()
     elif game == 4:
         if yes_no_checker("Have you played this Maori Quiz before?: ") == "no":
@@ -76,7 +77,7 @@ def instructions(game):
                   "you want to play type the corresponding number next to the "
                   "game\n\nEach game will give the instructions on how to play "
                   "their game")
-            print("=" * 62)
+            print("="*62)
             waiting()
 
 
@@ -94,45 +95,28 @@ def waiting():
             quit()
 
 
-# Runs the multiple choice questions
-def m_choice(question, answer, blank1, blank2, blank3, number):
-    instructions(3)
-    answer_randomiser = [answer, blank1, blank2, blank3]
-    random.shuffle(answer_randomiser)
-    option_one = answer_randomiser.pop(0)
-    option_two = answer_randomiser.pop(0)
-    option_three = answer_randomiser.pop(0)
-    option_four = answer_randomiser[0]
+# Asks a statement and tells whether player answer is correct or not
+def t_or_f(question, answer, number):
+    instructions(2)
     print(f"Question {number}:")
-    player_answer = input(f"{question}\n1 - {option_one}\n2 - {option_two}\n"
-                          f"3 - {option_three}\n4 - {option_four}\n")
-    while player_answer not in ("1", "2", "3", "4"):
-        player_answer = input("Answer either 1 2 3 or 4"
-                              f"\n{question}\n{option_one}\n{option_two}\n"
-                              f"{option_three}\n{option_four}\n")
-    if player_answer == "1" and option_one == answer:
-        decoration("CORRECT", 1)
-        return 1
-    elif player_answer == "2" and option_two == answer:
-        decoration("CORRECT", 1)
-        return 1
-    elif player_answer == "3" and option_three == answer:
-        decoration("CORRECT", 1)
-        return 1
-    elif player_answer == "4" and option_four == answer:
+    player_answer = input(f"{question}\n").lower()[:1]
+    while player_answer not in ("t", "f"):
+        player_answer = input(f"Answer either true or fal"
+                              f"se\n{question}\n").lower()
+    if player_answer == answer:
         decoration("CORRECT", 1)
         return 1
     else:
         decoration("Wrong", 3)
-        print(f"The Correct Answer was {answer}")
         return 0
 
 
-# Main Routine
-m_score = 0
+# Main routine
+t_or_f_score = 0
 
 # Questions
-m_score += m_choice("What is five in Maori?", "Rima", "Tahi", "Rua", "Iwa", 1)
+t_or_f_score += t_or_f("Rua means two", "t", 1)
+t_or_f_score += t_or_f("Rua means three", "f", 2)
 
 # Overall score
-decoration(f"You scored {m_score}/20", 0)
+decoration(f"You scored {t_or_f_score}/20", 0)

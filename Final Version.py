@@ -212,6 +212,7 @@ def play_again(score, total):
         quit()
 
 
+# The True and False Questions
 def true_or_false():
     instructions(2)
     t_or_f_score = 0
@@ -228,6 +229,7 @@ def true_or_false():
     return t_or_f_score
 
 
+# The Multiple Choice Questions
 def multiple_choice():
     instructions(3)
     m_score = 0
@@ -251,6 +253,7 @@ def multiple_choice():
     return m_score
 
 
+# The Whole Word Answers Questions
 def whole_word_answers():
     instructions(4)
     w_score = 0
@@ -275,7 +278,6 @@ instructions(1)
 total = 10
 score = 0
 score += choosing_game()
-
 while True:
     score += play_again(score, total)
     total += 10
