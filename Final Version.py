@@ -1,7 +1,12 @@
+""" This program is a quiz game for learning Maori. You can choose from 3
+different games, they are 1 - True or False 2 - Multiple Choice 3 - Whole
+Word Answers. Each game gives a score out of 10 and when you quit you are
+given a total score of all games you played and their totals added together """
 import random
 import time
 
 
+# It makes titles stand out
 def decoration(text, x):
     sides = "~" * 4
     formatted_text = f"{sides}{text}{sides}"
@@ -19,6 +24,7 @@ def decoration(text, x):
     return print(f"{top_bottom}\n{formatted_text}\n{top_bottom}\n")
 
 
+# Checks yes or no
 def yes_no_checker(question):
     while True:
         ans = input(question).lower()
@@ -278,6 +284,7 @@ instructions(1)
 total = 10
 score = 0
 score += choosing_game()
+# Simple loop
 while True:
     score += play_again(score, total)
     total += 10
