@@ -145,7 +145,6 @@ def t_or_f(question, answer, number):
 
 # Asks a question and shows 4 different answers
 def m_choice(question, answer, blank1, blank2, blank3, number):
-    instructions(3)
     answer_randomiser = [answer, blank1, blank2, blank3]
     random.shuffle(answer_randomiser)
     option_one = answer_randomiser.pop(0)
